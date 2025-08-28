@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { recoverFromPreorder, TreeNode } from './main'
+import { recoverFromPreorder, TreeNode } from './1028'
 
 // Helper function to convert tree to array representation
 function treeToArray(root: TreeNode | null): (number | null)[] {
