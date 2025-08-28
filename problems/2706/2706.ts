@@ -1,19 +1,19 @@
 export function buyChoco(prices: number[], money: number): number {
-  let sum = 0
+  let bought = 0
   prices.sort((a, b) => a - b)
-  if (prices[0] > money) return money
 
   let chocos = 0
+  const MAX_CHOCOS = 2
   for (let i = 0; i < prices.length; i++) {
-    if (i > 2) break
+    if (chocos === MAX_CHOCOS) break
 
-    const item = prices[i]
-    if (item < money && sum + item <= money) {
-      sum += item
+    const price = prices[i]
+    if (price < money && bought + price <= money) {
+      bought += price
       chocos += 1
     }
   }
 
-  if (chocos < 2) return money
-  return money - sum
+  if (chocos < MAX_CHOCOS) return money
+  return money - bought
 }
