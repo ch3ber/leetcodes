@@ -14,26 +14,19 @@ export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNod
     l2 = l2.next
   }
 
+  let head: ListNode | null = null
   let carry: number = 0
-
   let i: number = l1Values.length - 1
   let j: number = l2Values.length - 1
-
-  const ans: number[] = []
 
   while (i >= 0 || j >= 0 || carry !== 0) {
     const val1 = l1Values[i] ?? 0
     const val2 = l2Values[j] ?? 0
     const sum = val1 + val2 + carry
     carry = Math.floor(sum / 10)
-    ans.push(sum % 10)
+    head = new ListNode(sum % 10, head)
     i--
     j--
-  }
-
-  let head: ListNode | null = null
-  for (const el of ans) {
-    head = new ListNode(el, head)   
   }
 
   return head
